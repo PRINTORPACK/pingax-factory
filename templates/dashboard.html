@@ -50,9 +50,24 @@
 
     <div class="container-fluid px-4">
         <div class="row g-3 mb-4">
-            <div class="col-md-4"><div class="stat-card" style="border-top-color: #1E88E5;"><div class="stat-title">TOTAL HISTORY ORDERS</div><div class="stat-value">{{ orders|length }}</div></div></div>
-            <div class="col-md-4"><div class="stat-card" style="border-top-color: #FB8C00;"><div class="stat-title">ACTIVE IN-PRODUCTION</div><div class="stat-value">{{ orders|length }}</div></div></div>
-            <div class="col-md-4"><div class="stat-card" style="border-top-color: #43A047;"><div class="stat-title">READY FOR DISPATCH</div><div class="stat-value">0</div></div></div>
+            <div class="col-md-4">
+                <div class="stat-card" style="border-top-color: #1E88E5;">
+                    <div class="stat-title">TOTAL HISTORY ORDERS</div>
+                    <div class="stat-value">{{ orders|length }}</div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="stat-card" style="border-top-color: #FB8C00;">
+                    <div class="stat-title">ACTIVE IN-PRODUCTION</div>
+                    <div class="stat-value">{{ orders|length }}</div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="stat-card" style="border-top-color: #43A047;">
+                    <div class="stat-title">READY FOR DISPATCH</div>
+                    <div class="stat-value">0</div>
+                </div>
+            </div>
         </div>
 
         <div class="card p-3 mb-4 border-0 shadow-sm" style="border-radius: 12px;">
@@ -155,7 +170,6 @@
                             </select>
                         </form>
                     </div>
-
                 </div>
             </div>
             {% endfor %}
