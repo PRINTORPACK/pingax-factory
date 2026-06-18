@@ -35,6 +35,8 @@
         .action-icon { color: #757575; font-size: 0.95rem; text-decoration: none; margin-left: 10px; transition: 0.2s; }
         .action-icon:hover { color: #6A1B9A; }
         .delete-icon:hover { color: #d32f2f; }
+        /* Fix for pointer on delete icon */
+        .delete-icon { cursor: pointer; }
     </style>
 </head>
 <body>
@@ -50,24 +52,9 @@
 
     <div class="container-fluid px-4">
         <div class="row g-3 mb-4">
-            <div class="col-md-4">
-                <div class="stat-card" style="border-top-color: #1E88E5;">
-                    <div class="stat-title">TOTAL HISTORY ORDERS</div>
-                    <div class="stat-value">{{ orders|length }}</div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="stat-card" style="border-top-color: #FB8C00;">
-                    <div class="stat-title">ACTIVE IN-PRODUCTION</div>
-                    <div class="stat-value">{{ orders|length }}</div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="stat-card" style="border-top-color: #43A047;">
-                    <div class="stat-title">READY FOR DISPATCH</div>
-                    <div class="stat-value">0</div>
-                </div>
-            </div>
+            <div class="col-md-4"><div class="stat-card" style="border-top-color: #1E88E5;"><div class="stat-title">TOTAL HISTORY ORDERS</div><div class="stat-value">{{ orders|length }}</div></div></div>
+            <div class="col-md-4"><div class="stat-card" style="border-top-color: #FB8C00;"><div class="stat-title">ACTIVE IN-PRODUCTION</div><div class="stat-value">{{ orders|length }}</div></div></div>
+            <div class="col-md-4"><div class="stat-card" style="border-top-color: #43A047;"><div class="stat-title">READY FOR DISPATCH</div><div class="stat-value">0</div></div></div>
         </div>
 
         <div class="card p-3 mb-4 border-0 shadow-sm" style="border-radius: 12px;">
@@ -136,7 +123,7 @@
                         <div>
                             <span class="order-id">#PI-100{{ o.id }}</span>
                             <a href="/edit-order/{{ o.id }}" class="action-icon" title="Edit Order"><i class="fas fa-pencil-alt"></i></a>
-                            <a href="/delete-order/{{ o.id }}" class="action-icon delete-icon" title="Delete Order" onclick="return confirm('Are you sure you want to delete this order?')"><i class="fas fa-trash-alt"></i></a>
+                            <a href="/delete-order/{{ o.id }}" class="action-icon delete-icon" title="Delete Order" onclick="return confirm('Are you sure you want to delete this order #PI-100{{ o.id }}?')"><i class="fas fa-trash-alt"></i></a>
                         </div>
                         <span class="status-badge {% if o.status == 'Printing' %}status-printing{% elif o.status == 'Cutting' %}status-cutting{% elif o.status == 'Lamination' %}status-lamination{% elif o.status == 'Dispatch' %}status-dispatch{% elif o.status == 'Completed' %}status-completed{% else %}status-design{% endif %}">
                             {{ o.status }}
