@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Order - Pingax Industries</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body { background-color: #f1edf7; font-family: sans-serif; }
+        .form-container { max-width: 700px; margin: 40px auto; }
+        .card { border-radius: 15px; border: none; box-shadow: 0 4px 15px rgba(0,0,0,0.05); background: white; }
+        .form-label { font-size: 0.85rem; font-weight: 600; color: #555; margin-bottom: 4px; }
+        .form-control, .form-select { border-radius: 6px; border: 1px solid #ced4da; padding: 8px 12px; font-size: 0.9rem; color: #333; }
+        .btn-purple { background-color: #6A1B9A; color: white; border-radius: 8px; font-weight: bold; font-size: 0.95rem; }
+        .btn-purple:hover { background-color: #4A148C; color: white; }
+        .btn-back { border: 1px solid #ced4da; background: white; border-radius: 6px; color: #555; padding: 6px 12px; }
+    </style>
+</head>
+<body>
+
+    <div class="container form-container">
+        <div class="card p-4">
+            
+            <div class="d-flex align-items-center mb-4">
+                <a href="/" class="btn-back me-3"><i class="fas fa-arrow-left"></i></a>
+                <h4 class="mb-0" style="color: #6A1B9A;"><i class="fas fa-pencil-alt me-2"></i> Edit Order #PI-100{{ o.id }}</h4>
+            </div>
+
+            <form method="POST">
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label class="form-label">Client Name</label>
+                        <input name="client" class="form-control" value="{{ o.client }}" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Customer Contact No.</label>
+                        <input name="contact" class="form-control" value="{{ o.contact }}">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Product / Order Item</label>
+                        <input name="product" class="form-control" value="{{ o.product }}" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Size (Dimensions)</label>
+                        <input name="size" class="form-control" value="{{ o.size }}">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Quantity</label>
+                        <input name="qty" class="form-control" value="{{ o.qty }}" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Paper GSM / Quality</label>
+                        <input name="gsm" class="form-control" value="{{ o.gsm }}">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Colour Type</label>
+                        <input name="colour_type" class="form-control" value="{{ o.colour_type }}">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Printing Side</label>
+                        <input name="printing_side" class="form-control" value="{{ o.printing_side }}">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Special Process</label>
+                        <input name="process" class="form-control" value="{{ o.process }}">
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">Order Date</label>
+                        <input type="date" name="order_date" class="form-control" value="{{ o.order_date }}">
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">Required Date</label>
+                        <input type="date" name="required_date" class="form-control" value="{{ o.required_date }}">
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label">Remarks</label>
+                        <textarea name="remarks" class="form-control" rows="3">{{ o.remarks }}</textarea>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Brought By (Staff)</label>
+                        <input name="staff" class="form-control" value="{{ o.order_by }}" required>
+                    </div>
+                    <div class="col-12 mt-4">
+                        <button type="submit" class="btn btn-purple w-100 py-2 text-uppercase">Update & Save Changes</button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+</body>
+</html>

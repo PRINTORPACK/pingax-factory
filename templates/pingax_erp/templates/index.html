@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pingax ERP Dashboard</title>
+
+    <style>
+        body{
+            font-family: Arial;
+            background:#f2f4f7;
+            margin:0;
+            padding:20px;
+        }
+
+        h2{
+            text-align:center;
+        }
+
+        .container{
+            display:flex;
+            flex-wrap:wrap;
+            gap:20px;
+            justify-content:center;
+            margin-top:20px;
+        }
+
+        .card{
+            width:260px;
+            background:white;
+            padding:15px;
+            border-radius:10px;
+            box-shadow:0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .title{
+            font-weight:bold;
+            font-size:18px;
+            margin-bottom:10px;
+        }
+
+        .row{
+            margin:5px 0;
+        }
+
+        .status{
+            padding:4px 8px;
+            border-radius:5px;
+            color:white;
+            font-size:12px;
+        }
+
+        .Printing{background:orange;}
+        .Packing{background:blue;}
+        .Cutting{background:purple;}
+        .Dispatch{background:green;}
+    </style>
+
+</head>
+
+<body>
+
+<h2>📦 Pingax ERP Dashboard</h2>
+
+<div class="container">
+
+    {% for order in orders %}
+
+    <div class="card">
+
+        <div class="title">{{ order.order_no }}</div>
+
+        <div class="row"><b>Client:</b> {{ order.client }}</div>
+        <div class="row"><b>Product:</b> {{ order.product }}</div>
+
+        <div class="row">
+            <b>Status:</b>
+            <span class="status {{ order.status }}">
+                {{ order.status }}
+            </span>
+        </div>
+
+    </div>
+
+    {% endfor %}
+
+</div>
+
+</body>
+</html>
