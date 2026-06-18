@@ -14,6 +14,9 @@
         .btn-purple { background-color: #6A1B9A !important; color: white !important; font-weight: 700; border: none; }
         
         .order-card-premium { background: white; border-radius: 12px; box-shadow: 0 6px 18px rgba(0,0,0,0.05); padding: 22px; border-left: 6px solid #6A1B9A; margin-bottom: 24px; }
+        .order-id { background-color: #f1f0f6; color: #6A1B9A; font-size: 0.75rem; font-weight: 700; padding: 5px 10px; border-radius: 6px; }
+        /* Added Status Badge Styling */
+        .status-badge { background-color: #f3e5f5; color: #6A1B9A; font-size: 0.7rem; font-weight: 800; padding: 4px 10px; border-radius: 6px; text-transform: uppercase; }
         .grid-info-box { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 18px; background: #fafafa; padding: 14px; border-radius: 8px; }
         .staff-row { background-color: #f8f7fa; padding: 12px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; }
         .action-icon { color: #6A1B9A; font-size: 0.95rem; cursor: pointer; margin-left: 10px; }
@@ -27,9 +30,7 @@
         <!-- Search & Staff Report Section -->
         <div class="card p-3 mb-4 border-0 shadow-sm">
             <form method="GET" action="/" class="row g-2 align-items-center">
-                <div class="col-md-4">
-                    <input type="text" name="search" value="{{ search_query }}" class="form-control" placeholder="Search Client, Product...">
-                </div>
+                <div class="col-md-4"><input type="text" name="search" value="{{ search_query }}" class="form-control" placeholder="Search Client, Product..."></div>
                 <div class="col-md-3">
                     <select name="status_filter" class="form-select">
                         <option value="">-- All Status --</option>
@@ -49,30 +50,21 @@
             </form>
         </div>
 
-        <!-- Staff Performance -->
-        <div class="mb-4">
-            <h6 class="text-muted"><i class="fas fa-users"></i> Staff Performance ({{ current_month }})</h6>
-            <div class="d-flex gap-3">
-                {% for staff in staff_report %}
-                <div class="bg-white p-3 rounded shadow-sm">
-                    <strong>{{ staff.name }}</strong>: {{ staff.count }} Orders
-                </div>
-                {% endfor %}
-            </div>
-        </div>
-
         <!-- Orders -->
         <div class="row">
             {% for o in orders %}
             <div class="col-md-4">
                 <div class="order-card-premium">
-                    <div class="d-flex justify-content-between mb-3">
-                        <span class="badge bg-light text-dark">#PI-100{{ o.id }}</span>
+                    <div class="d-flex justify-content-between align-items-center mb-3">
                         <div>
+                            <span class="order-id">#PI-100{{ o.id }}</span>
                             <a href="/edit-order/{{ o.id }}" class="action-icon"><i class="fas fa-pencil-alt"></i></a>
                             <a href="/delete-order/{{ o.id }}" class="action-icon" onclick="return confirm('Delete?')"><i class="fas fa-trash-alt"></i></a>
                         </div>
+                        <!-- Status Badge Added Back -->
+                        <span class="status-badge">{{ o.status }}</span>
                     </div>
+                    
                     <h5 class="fw-bold">{{ o.client }}</h5>
                     <div class="grid-info-box">
                         <div class="small">Item: <strong>{{ o.product }}</strong></div>
