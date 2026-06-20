@@ -35,6 +35,15 @@
         .action-icon { color: #757575; font-size: 0.95rem; text-decoration: none; margin-left: 10px; transition: 0.2s; }
         .action-icon:hover { color: #6A1B9A; }
         .delete-icon:hover { color: #d32f2f; }
+        .stat-card{
+   transition: all 0.35 ease;
+   cursor:pointer;
+}
+
+.stat-card:hover{
+   transform: translateY(-8px) scale(1.02);
+   box-shadow:0 15px 30px rgba(0,0,0,.15);
+}
     </style>
 </head>
 <body>
@@ -47,7 +56,9 @@
             <i class="fas fa-user-shield me-1"></i> Drashti (Admin)
         </div>
     </div>
-
+<div class="card stat-card">
+    ...
+</div>
     <div class="container-fluid px-4">
         <div class="row g-3 mb-4">
             <div class="col-md-4">
@@ -89,6 +100,7 @@
                         <option value="Completed" {% if status_filter == 'Completed' %}selected{% endif %}>Completed</option>
                     </select>
                 </div>
+                
                 <div class="col-md-3">
                     <select name="month_filter" class="form-select" onchange="this.form.submit()">
                         {% for m in available_months %}
@@ -175,6 +187,14 @@
                                     <option {% if o.status == 'Lamination' %}selected{% endif %}>Lamination</option>
                                     <option {% if o.status == 'Dispatch' %}selected{% endif %}>Dispatch</option>
                                     <option {% if o.status == 'Completed' %}selected{% endif %}>Completed</option>
+                                    <select name="status" onchange="this.form.submit()" class="select-sm-custom">
+    <option value="Design" {% if o.status == 'Design' %}selected{% endif %}>Design</option>
+    <option value="Printing" {% if o.status == 'Printing' %}selected{% endif %}>Printing</option>
+    <option value="Cutting" {% if o.status == 'Cutting' %}selected{% endif %}>Cutting</option>
+    <option value="Lamination" {% if o.status == 'Lamination' %}selected{% endif %}>Lamination</option>
+    <option value="Dispatch" {% if o.status == 'Dispatch' %}selected{% endif %}>Dispatch</option>
+    <option value="Completed" {% if o.status == 'Completed' %}selected{% endif %}>Completed</option>
+</select>
                                 </select>
                             </form>
                         </div>

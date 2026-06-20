@@ -85,6 +85,27 @@
                             <option>Foil Stamping (Gold/Silver)</option>
                             <option>Embossing</option>
                         </select>
+                        <label>Status</label>
+<select name="status" required>
+    <option value="">Select Status</option>
+    <option value="Enquiry">Enquiry</option>
+    <option value="Quotation Sent">Quotation Sent</option>
+    <option value="PO Received">PO Received</option>
+    <option value="Design">Design</option>
+    <option value="Printing">Printing</option>
+    <option value="Lamination">Lamination</option>
+    <option value="Finishing">Finishing</option>
+    <option value="Dispatch">Dispatch</option>
+    <option value="Completed">Completed</option>
+</select>
+<label>Priority</label>
+<select name="priority" required>
+    <option value="">Select Priority</option>
+    <option value="Low">Low</option>
+    <option value="Medium">Medium</option>
+    <option value="High">High</option>
+    <option value="Urgent">Urgent</option>
+</select>
                     </div>
                     <div class="col-md-3">
                         <label class="form-label">Order Date</label>
@@ -100,16 +121,45 @@
                         <textarea name="remarks" class="form-control" rows="3" placeholder="Enter remarks here..."></textarea>
                     </div>
 
-                    <div class="col-md-6">
-                        <label class="form-label">Brought By (Staff)</label>
-                        <input name="staff" class="form-control" placeholder="Staff Name" required>
-                    </div>
+          <div class="col-md-6">
+    <label class="form-label">Special Process</label>
+    <select name="process" class="form-select">
+        <option>None (Plain)</option>
+        <option>UV Coating</option>
+        <option>Drip-off Gloss/Matt</option>
+        <option>Matt Lamination</option>
+        <option>Gloss Lamination</option>
+        <option>Foil Stamping (Gold/Silver)</option>
+        <option>Embossing</option>
+    </select>
+</div>
 
-                    <div class="col-12 mt-4">
-                        <button type="submit" class="btn btn-purple w-100 py-2 text-uppercase">Save Order</button>
-                    </div>
+<div class="col-md-6">
+    <label class="form-label">Status</label>
+    <select name="status" class="form-select" required>
+        <option value="">Select Status</option>
+        <option value="Enquiry">Enquiry</option>
+        <option value="Quotation Sent">Quotation Sent</option>
+        <option value="PO Received">PO Received</option>
+        <option value="Design">Design</option>
+        <option value="Printing">Printing</option>
+        <option value="Lamination">Lamination</option>
+        <option value="Finishing">Finishing</option>
+        <option value="Dispatch">Dispatch</option>
+        <option value="Completed">Completed</option>
+    </select>
+</div>
 
-                </div>
+<div class="col-md-6">
+    <label class="form-label">Priority</label>
+    <select name="priority" class="form-select" required>
+        <option value="">Select Priority</option>
+        <option value="Low">Low</option>
+        <option value="Medium">Medium</option>
+        <option value="High">High</option>
+        <option value="Urgent">Urgent</option>
+    </select>
+</div>
             </form>
 
         </div>

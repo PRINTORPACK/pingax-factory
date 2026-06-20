@@ -123,19 +123,34 @@ def delete_order(order_id):
     conn.commit()
     conn.close()
     return redirect(url_for('dashboard'))
-
-# ... (upar ka code)
-
 @app.route('/update', methods=['POST'])
 def update():
+    if 'user' not in session:
+        return redirect(url_for('login'))
+
+    order_id = request.form.get('id')
+    new_status = request.form.get('status')
+    new_priority = request.form.get('priority')
+
     conn = get_db()
     cursor = conn.cursor()
-    cursor.execute("UPDATE orders SET status = ? WHERE id = ?", (request.form.get('status'), request.form.get('id')))
+
+    if new_status:
+        cursor.execute(
+            "UPDATE orders SET status = ? WHERE id = ?",
+            (new_status, order_id)
+        )
+    elif new_priority:
+        cursor.execute(
+            "UPDATE orders SET priority = ? WHERE id = ?",
+            (new_priority, order_id)
+        )
+
     conn.commit()
     conn.close()
-    return redirect(url_for('dashboard'))
 
-# Yahan par 'delete_order' wala function bhi check kar lein ki ek hi baar ho!
+    return redirect(url_for('dashboard'))
 
 if __name__ == '__main__':
     app.run(debug=True)
+    
